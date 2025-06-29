@@ -4,19 +4,29 @@ Tagline: "The Protocol Registry That Parties Responsibly."
 
 ## 📄 Documentation Philosophy
 
-**PortHub maintains minimal documentation by design.** This roadmap serves as our single source of truth, containing project goals, technical specifications, and brand guidelines. We avoid documentation sprawl and keep everything centralized here.
+**PortHub maintains minimal documentation by design.** This roadmap serves as 
+our single source of truth, containing project goals, technical specifications, 
+and brand guidelines. We avoid documentation sprawl and keep everything 
+centralized here.
 
 ### 📚 README Documentation Standards
 - **User-facing README.md**: Essential for NPM and GitHub distribution
 - **Mermaid diagrams**: Use for architecture, flow charts, and technical illustrations
-- **Diagram rendering**: Mermaid works natively in GitHub/Cursor, but NPM requires rendered PNG/SVG versions
-- **Documentation updates**: Keep README current with every release - no version drift allowed
+- **Diagram rendering**: Mermaid works natively in GitHub/Cursor, but NPM 
+  requires rendered PNG/SVG versions
+- **Documentation updates**: Keep README current with every release - no 
+  version drift allowed
 - **Visual consistency**: All diagrams follow PortHub color scheme and branding
-- **Technical depth**: README should be comprehensive enough for developers to understand and integrate
+- **Technical depth**: README should be comprehensive enough for developers 
+  to understand and integrate
 
 ## 🎯 Overview
 
-PortHub is a local or network-enabled port registry service for development environments. It eliminates port conflicts by managing a centralized, discoverable registry of both static and dynamic port assignments across projects. Think of it as a DHCP server, but for ports — with a little snark and a lot of smarts.
+PortHub is a local or network-enabled port registry service for development 
+environments. It eliminates port conflicts by managing a centralized, 
+discoverable registry of both static and dynamic port assignments across 
+projects. Think of it as a DHCP server, but for ports — with a little snark 
+and a lot of smarts.
 
 ### 🌐 DHCP Analogy
 
@@ -269,83 +279,122 @@ We categorize ports and services like an adult video library:
 ### 📋 Strategic Decisions Summary
 
 #### **Development Philosophy**
-- **Professional Polish Day One**: No MVP release - slick and lubricated first release
-- **macOS First**: Single platform focus for adoption, identical experience planned for other platforms
-- **Automated Everything**: Self-documenting CLI, auto-updating documentation, progress tracking
-- **Maximum Compute**: Use highest available AI models (o4, Opus) for development assistance
+- **Professional Polish Day One**: No MVP release - slick and lubricated 
+  first release
+- **macOS First**: Single platform focus for adoption, identical experience 
+  planned for other platforms
+- **Automated Everything**: Self-documenting CLI, auto-updating 
+  documentation, progress tracking
+- **Maximum Compute**: Use highest available AI models (o4, Opus) for 
+  development assistance
 
 #### **Technology Stack Decisions**
-- **NPM Distribution**: Single package `@porthub/porthub` containing everything
-- **CLI Architecture**: Docker-style with custom PortHub commands (`porthub start sneakysniffer --dirty`)
-- **Dashboard Technology**: React-based (decision deferred for architecture review)
-- **Documentation**: Automated generation with manual polish, tracks roadmap updates automatically
+- **NPM Distribution**: Single package `@porthub/porthub` containing 
+  everything
+- **CLI Architecture**: Docker-style with custom PortHub commands 
+  (`porthub start sneakysniffer --dirty`)
+- **Dashboard Technology**: React-based (decision deferred for 
+  architecture review)
+- **Documentation**: Automated generation with manual polish, tracks 
+  roadmap updates automatically
 
 #### **User Experience Configuration**
-- **Dashboard Control Central**: All major settings configurable via "Port Exploder" UI
+- **Dashboard Control Central**: All major settings configurable via 
+  "Port Exploder" UI
 - **Three Control Levels**:
-  - 🕺 **Full Pimp**: "I'll handle this crisis for you, sir" (helpful butler)
-  - 🎭 **Casting Consultant**: "Here's what I recommend, but you decide" (professional consultant)  
-  - 👁️ **Voyeur**: "Here's what happened, good luck figuring it out" (informed observer)
+  - 🕺 **Full Pimp**: "I'll handle this crisis for you, sir" 
+    (helpful butler)
+  - 🎭 **Casting Consultant**: "Here's what I recommend, but you decide" 
+    (professional consultant)  
+  - 👁️ **Voyeur**: "Here's what happened, good luck figuring it out" 
+    (informed observer)
 
 #### **Feature Naming Conventions**
-- **Port Exploder**: Main dashboard with resizable/sortable columns (Excel/file explorer style)
-- **SneakySniffer**: Port scanning command (`porthub start sneakysniffer`)
-- **Port Fluffer**: Little Snitch-style notification popups for conflicts
-- **Nucleargasm**: Hidden nuclear reset option (secret command with clitoral snarkiness)
-- **PortVision**: Community news feed showing download stats, GitHub mentions, etc.
-- **Log-Therapy/Port-Therapy**: Immediate + contextual help for user mistakes
+- **Port Exploder**: Main dashboard with resizable/sortable columns 
+  (Excel/file explorer style)
+- **SneakySniffer**: Port scanning command 
+  (`porthub start sneakysniffer`)
+- **Port Fluffer**: Little Snitch-style notification popups for 
+  conflicts
+- **Nucleargasm**: Hidden nuclear reset option (secret command with 
+  clitoral snarkiness)
+- **PortVision**: Community news feed showing download stats, GitHub 
+  mentions, etc.
+- **Log-Therapy/Port-Therapy**: Immediate + contextual help for user 
+  mistakes
 
 ### 🎯 Development Priorities & Timeline
 
 #### **Phase 1: Foundation (Weeks 1-4)**
-- **Core CLI Framework**: Self-documenting help system, command structure
+- **Core CLI Framework**: Self-documenting help system, command 
+  structure
 - **Basic Daemon**: Process management, PID handling, core registry
-- **Essential Configuration**: Port Pimp wizard setup, config hierarchy
+- **Essential Configuration**: Port Pimp wizard setup, config 
+  hierarchy
 - **Native OS Integration**: macOS port scanning, service detection
 
 #### **Phase 2: Intelligence (Weeks 5-8)**  
-- **STD Testing System**: Service & Transmission Diagnostics full implementation
-- **Real-time Monitoring**: Service detection, conflict resolution, Port Fluffer notifications
-- **Device Classification**: PortStars, PortHogs, D.H.C.P., Butterflies
+- **STD Testing System**: Service & Transmission Diagnostics full 
+  implementation
+- **Real-time Monitoring**: Service detection, conflict resolution, 
+  Port Fluffer notifications
+- **Device Classification**: PortStars, PortHogs, D.H.C.P., 
+  Butterflies
 - **Error Handling**: Comprehensive recovery, Port Pimp Rehab system
 
 #### **Phase 3: Interface (Weeks 9-12)**
-- **Port Exploder Dashboard**: React-based UI with full configurability
-- **PortVision Feed**: Community stats, download metrics, GitHub integration
-- **Advanced Features**: GANG BANG mode, performance monitoring, analytics
-- **Testing & Polish**: Comprehensive testing, performance optimization
+- **Port Exploder Dashboard**: React-based UI with full 
+  configurability
+- **PortVision Feed**: Community stats, download metrics, GitHub 
+  integration
+- **Advanced Features**: GANG BANG mode, performance monitoring, 
+  analytics
+- **Testing & Polish**: Comprehensive testing, performance 
+  optimization
 
 #### **Phase 4: Professional Polish (Weeks 13-16)**
-- **Documentation Automation**: Auto-generated docs, progress tracking
+- **Documentation Automation**: Auto-generated docs, progress 
+  tracking
 - **Beta Testing Program**: Invite-only beta cucks for feedback
 - **Performance Benchmarking**: Meet all performance targets
-- **Release Preparation**: NPM packaging, GitHub repository, community setup
+- **Release Preparation**: NPM packaging, GitHub repository, community 
+  setup
 
 ### 🧪 Testing & Quality Strategy
 
 #### **Comprehensive Quality Approach**
 - **Manual Testing**: Developer testing during development phases
-- **Automated Testing**: Unit tests, integration tests, CLI command validation
-- **Beta User Testing**: Real developers in real environments (beta cucks program)
+- **Automated Testing**: Unit tests, integration tests, CLI command 
+  validation
+- **Beta User Testing**: Real developers in real environments 
+  (beta cucks program)
 - **Performance Testing**: Continuous benchmarking against targets
 
 #### **Performance Benchmarks**
-- **CLI Response Time**: Under 100ms for simple commands (aim to "shoot at targets")
+- **CLI Response Time**: Under 100ms for simple commands 
+  (aim to "shoot at targets")
 - **Daemon Memory Usage**: Under 50MB RAM (professional efficiency)
-- **System Scan Performance**: Full scan under 5 seconds (SneakySniffer speed)
-- **Dashboard Load Time**: Under 2 seconds to full functionality (instant gratification)
-- **Port Detection Latency**: Real-time service detection under 1 second
+- **System Scan Performance**: Full scan under 5 seconds 
+  (SneakySniffer speed)
+- **Dashboard Load Time**: Under 2 seconds to full functionality 
+  (instant gratification)
+- **Port Detection Latency**: Real-time service detection under 
+  1 second
 
 ### 📦 Distribution & Community Strategy
 
 #### **NPM Packaging**
-- **Single Package**: `@porthub/porthub` contains CLI, daemon, dashboard
+- **Single Package**: `@porthub/porthub` contains CLI, daemon, 
+  dashboard
 - **Global Installation**: `npm install -g @porthub/porthub`
-- **Automatic Updates**: Built-in update notification and migration tools
-- **Semantic Versioning**: Major versions can break compatibility with migration tools
+- **Automatic Updates**: Built-in update notification and migration 
+  tools
+- **Semantic Versioning**: Major versions can break compatibility with 
+  migration tools
 
 #### **Documentation Automation**
-- **Roadmap Synchronization**: Documentation automatically updates with roadmap changes
+- **Roadmap Synchronization**: Documentation automatically updates with 
+  roadmap changes
 - **Progress Tracking**: Mandatory progress log updates during development
 - **CLI Self-Documentation**: Dynamic help system detects command changes
 - **API Documentation**: Auto-generated from JSDoc with manual polish
