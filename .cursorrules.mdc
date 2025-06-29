@@ -1,0 +1,189 @@
+# PortHub Cursor Rules
+# "No Bloat. No Debt. No Bullshit."
+
+## 🎯 Core Philosophy
+- **MINIMUM BLOAT**: Every line of code must justify its existence
+- **IMMEDIATE TECH DEBT**: Address technical debt the moment it's identified
+- **SINGLE SOURCE OF TRUTH**: All documentation lives in ROADMAP.md
+- **SNARKY BUT FUNCTIONAL**: Maintain PortHub's personality without sacrificing performance
+
+## 🚫 Anti-Bloat Enforcement
+- NO unused imports, variables, or functions
+- NO commented-out code blocks (delete it)
+- NO duplicate logic (DRY principle, but don't over-abstract)
+- NO "TODO" comments (fix it now or create an issue)
+- NO dependencies without clear justification
+- NO config files for config files (looking at you, webpack)
+- NO premature optimization, but NO obvious performance sins
+
+## 📁 File Management
+- Keep file count minimal - prefer larger cohesive files over micro-files
+- Delete temp files, test artifacts, and debug outputs immediately
+- Use .gitignore aggressively for build artifacts
+- One source of truth: if it's in ROADMAP.md, don't duplicate it elsewhere
+
+## 🎨 PortHub Brand Guidelines
+- Maintain snarky personality in CLI output, error messages, and logs
+- Use PortHub terminology: "Hublet", "Fluffer", "Peep Show", etc.
+- Color scheme: black background, orange (#FF9900) primary
+- Registration language: "book", "stake", "slide into" instead of "register"
+
+## 🧹 Session Wrap Protocol (Enhanced)
+When user says "session wrap" or "let's wrap", execute this comprehensive 8-step procedure:
+
+### 1. Session Summary 📋
+- **Accomplishments**: What we built, fixed, or improved
+- **Technical breakthroughs**: Solutions to blockers or architecture decisions
+- **Testing results**: What works, what broke, validation outcomes
+- **Code quality improvements**: Refactoring, optimization, cleanup performed
+- **Performance metrics**: Build times, bundle sizes, runtime improvements
+
+### 2. Next Session Priorities 🎯
+- **Critical path items**: Must-do tasks for next session
+- **Specific success criteria**: Measurable goals to achieve
+- **Roadmap milestone progress**: Which milestones advanced/completed
+- **Technical blockers**: Known issues requiring resolution
+- **Risk assessments**: Potential obstacles and mitigation strategies
+
+### 3. Documentation Maintenance 📚
+- **Update ROADMAP.md**: Add new features, modify milestones, update status
+- **Update .cursorrules**: Reflect any new patterns, rules, or architecture changes
+- **Brand guidelines compliance**: Ensure snarky personality maintained
+- **Documentation drift detection**: Find outdated guides, stale instructions
+- **Cross-reference validation**: Check internal links and file references
+
+### 4. Technical Debt Cleanup 🧹
+- **Scan for deletion candidates**: Temp files, backups, obsolete code, debug outputs
+- **Unused dependencies audit**: Remove packages not actively used
+- **Dead code detection**: Functions, variables, imports no longer referenced
+- **Configuration consistency**: Validate all config files align
+- **Broken reference cleanup**: Fix invalid file paths, missing dependencies
+- **Recommend specific files for removal** with justification
+
+### 5. Configuration Validation ⚙️
+- **Verify .gitignore**: Add new patterns for build artifacts, temp files
+- **Check package.json**: Version consistency, dependency alignment, script validity
+- **Validate cursor configurations**: .cursorrules, workspace settings
+- **Environment setup verification**: Development tools, paths, permissions
+- **Cross-platform compatibility**: Ensure setup works on different systems
+
+### 6. Git Management Strategy 🔀
+**Local Development Commits (Full Project):**
+- **Commit ALL files locally**: ROADMAP.md, .cursorrules, internal docs, dev files
+- **Full project history**: Maintain complete development context
+- **Descriptive commit messages** (under 200 chars, explain the "why")
+- **Include session wrap context** in commit description
+
+**Distribution Preparation:**
+- **Review .gitignore carefully**: Only core files for public distribution
+- **Exclude internal docs**: ROADMAP.md, .cursorrules, dev notes, session wraps
+- **Core files only**: CLI, configs, essential documentation, package.json
+- **Validate distribution**: Ensure only intended files will be published/shared
+- **Version bump if features added** following semantic versioning
+
+### 7. Handoff Notes 🚀
+- **Clear starting points**: Exactly where to begin next session
+- **Development environment status**: What's running, what's configured
+- **Known issues with context**: Debugging solutions that worked
+- **Immediate action items**: Ordered by priority with time estimates
+- **Architecture state**: Current working patterns and decisions
+
+### 8. Project Health Report 📊
+- **Repository cleanliness**: File count, organization, bloat assessment
+- **Documentation currency**: How up-to-date is everything (0-100%)
+- **Feature completion**: Progress toward MVP and Phase 2 milestones
+- **System stability**: What's working reliably vs. what's experimental
+- **Technical debt score**: Overall codebase health assessment
+
+### 9. AI Self-Reflection & Process Improvement 🤔
+- **Session learnings**: What worked well vs. what caused friction
+- **Process bottlenecks**: Identify inefficient patterns or repeated issues
+- **Rule enhancement opportunities**: Suggest specific .cursorrules improvements
+- **Workflow optimizations**: Better approaches discovered during session
+- **Knowledge gaps**: Areas where better documentation or automation needed
+- **Update recommendations**: Propose specific rule changes for next session
+
+## 🛠️ Code Quality Standards
+- Functions should do one thing well
+- Variable names should be descriptive (no single letters except loop counters)
+- Error messages should be helpful AND snarky
+- Comments explain WHY, not WHAT
+- No magic numbers - use named constants
+- Async/await over Promises over callbacks
+
+## 🎯 PortHub-Specific Rules
+- CLI commands should have personality: "porthub peek", "porthub claim", "porthub release"
+- Error messages should use PortHub slang: "Port already claimed, you greedy bastard"
+- Success messages should be celebratory: "Port 3000 is yours, you magnificent beast"
+- Dashboard should rotate taglines from ROADMAP.md
+- All port categories should use the adult video library naming convention
+
+## 🚨 Automatic Actions
+- Run linter after every code change
+- Clean up imports on save
+- Validate JSON configs on modification
+- Check for dead code after refactoring
+- Verify all external links in documentation
+
+## 💡 Decision Framework
+Before adding anything, ask:
+1. Does this solve a real problem?
+2. Is there a simpler way?
+3. Will this create maintenance burden?
+4. Does it align with PortHub's personality?
+5. Can we delete something else instead?
+
+## 📋 Session Context Continuity
+- **Always update .cursorrules** with current working state during session wraps
+- **Document architecture changes** immediately when they occur
+- **Track TODO items** with priority and context in ROADMAP.md
+- **Note debugging solutions** that work for future reference
+- **Maintain clean development state** between sessions
+
+## 📁 File Organization Standards
+- **Naming conventions**: Use descriptive prefixes (porthub-*, PORT_*, REGISTRY_*)
+- **File lifecycle management**: Clean up temp files, test artifacts, debug outputs
+- **Directory structure**: Organize by function, not file type
+- **Reference documentation**: Update ROADMAP.md when adding significant files
+- **Deletion protocol**: Justify removals, check for dependencies before deleting
+
+## 🛠️ Development Workflow
+- **Manual testing**: Test all CLI commands during development
+- **Cross-platform validation**: Ensure compatibility across macOS, Linux, Windows
+- **Version management**: Use semantic versioning with clear release notes
+- **Backwards compatibility**: Maintain where possible, document breaking changes
+- **Migration guides**: Provide clear upgrade paths for users
+
+## 🔧 Technical Standards
+- **Error handling**: Create helpful AND snarky error messages
+- **Configuration management**: Support multiple config sources with validation
+- **File system operations**: Use proper permission checking and backup strategies
+- **CLI design**: Intuitive commands with memorable aliases and good help text
+- **Performance**: Monitor build times, startup speed, memory usage
+
+## 🔀 Git & Distribution Strategy
+**Local Development Philosophy:**
+- **Commit everything locally**: Full development context, internal docs, roadmaps
+- **Rich development history**: Track all decisions, changes, and iterations
+- **No file exclusions locally**: Complete project state for development continuity
+
+**Distribution Philosophy:**
+- **Minimal public footprint**: Only essential files for end users
+- **Strategic .gitignore**: Hide internal development artifacts
+- **Core functionality focus**: CLI tools, configs, user documentation only
+- **Clean public repo**: No development notes, roadmaps, or internal planning docs
+
+**Files for Local Development Only:**
+- ROADMAP.md (internal planning)
+- .cursorrules (development guidelines)
+- Session wrap files
+- Development notes and planning docs
+- ASCII banners and internal branding assets
+
+**Files for Public Distribution:**
+- CLI executables and core code  
+- package.json and essential configs
+- User-facing README and documentation
+- License and contribution guidelines
+
+Remember: "Get it up. Get it bound. Stay registered." - but keep it clean under the hood. 
