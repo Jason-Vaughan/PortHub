@@ -94,6 +94,24 @@ porthub dashboard
 
 ⸻
 
+## 🔧 Technical Reference
+
+**For complete implementation details, see `technical-specifications.json`**
+
+| Implementation Area | Technical Specs Location |
+|-------------------|--------------------------|
+| **Port Registry Data** | `core_registry_schema` |
+| **Protocol Packets** | `protocol_schema.porthub_protocol_packet` |
+| **REST/WebSocket APIs** | `api_endpoints` |
+| **Configuration Schema** | `configuration_schema.user_config_schema` |
+| **Device Classifications** | `device_classifications.categories` |
+| **STD Testing** | `std_testing_schema.test_result_structure` |
+| **Security Model** | `security_model` |
+| **Performance Targets** | `performance_targets.targets` |
+| **Core Workflows** | `workflow_definitions` |
+
+⸻
+
 ## 🔄 Protocol Design (PortHub Protocol)
 
 Basic Packet Fields:

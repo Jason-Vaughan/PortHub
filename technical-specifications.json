@@ -1,77 +1,100 @@
 {
   "porthub_technical_specifications": {
     "version": "1.0.0",
-    "last_updated": "2025-06-29",
+    "last_updated": "2025-01-16",
+    "description": "Comprehensive technical implementation specifications for PortHub - the port registry that parties responsibly",
     
-    "prevention_strategies": {
-      "proactive_monitoring": {
-        "predictive_analysis": {
-          "port_usage_trends": "Track patterns to predict conflicts",
-          "resource_usage_projection": "Predict when system limits will be hit", 
-          "service_behavior_learning": "Learn normal vs abnormal service patterns",
-          "failure_prediction": "Identify conditions that lead to crashes"
+    "core_registry_schema": {
+      "description": "Primary data structure for PortHub's port registry",
+      "structure": {
+        "version": "1.0",
+        "workspace_id": "tilt-dev",
+        "daemon_port": 7777,
+        "last_updated": "ISO 8601 timestamp",
+        "pimp_signature": "🕺 Port Pimp Professional Management™",
+        
+        "ports": {
+          "port_number": {
+            "type": "static|dynamic",
+            "app_name": "service name",
+            "description": "snarky service description",
+            "owner": "user@workspace",
+            "registered_at": "ISO 8601 timestamp",
+            "lease_expires": "ISO 8601 timestamp or null for static",
+            "last_heartbeat": "ISO 8601 timestamp",
+            "metadata": {
+              "project": "project name",
+              "environment": "dev|staging|prod",
+              "category": "nubiles|milfs|gmilfs|tramp_stamps|bind_stormers|fluffers",
+              "bind_style": "exclusive|shared|promiscuous"
+            },
+            "std_results": "STD testing results object"
+          }
         },
         
-        "automated_maintenance": {
-          "log_rotation": "daily",
-          "backup_cleanup": "weekly", 
-          "registry_optimization": "weekly",
-          "performance_tuning": "monthly",
-          "security_updates": "automatic"
+        "rogue_ports": {
+          "port_number": {
+            "detected_at": "ISO 8601 timestamp",
+            "status": "unregistered_butterfly|needs_testing|blocked",
+            "resolution_options": ["claim", "ignore", "block"],
+            "std_results": "STD testing results object",
+            "alert_sent": "boolean"
+          }
         },
         
-        "early_warning_system": {
-          "approaching_gang_bang_mode": "Alert at 80% of threshold",
-          "resource_exhaustion_warning": "Alert at 75% of limits",
-          "service_instability": "Alert on repeated crashes",
-          "configuration_drift": "Alert on unauthorized changes"
-        }
-      },
-      
-      "user_education_automation": {
-        "contextual_tips": [
-          "💡 Tip: Register this service for better management",
-          "🎯 Pro tip: Use 'porthub scan' to find rogue ports",
-          "🔧 Maintenance tip: Your logs are getting large",
-          "⚡ Performance tip: Consider increasing scan interval"
-        ],
+        "config": {
+          "dynamic_range": [8000, 8999],
+          "excluded_ports": [22, 80, 443, 7777],
+          "default_ttl": 3600,
+          "scan_interval": 300,
+          "gang_bang_threshold": 10
+        },
         
-        "guided_troubleshooting": {
-          "problem_detection": "automatic",
-          "solution_suggestion": "contextual",
-          "step_by_step_guidance": "interactive",
-          "success_validation": "automatic"
+        "statistics": {
+          "total_ports_managed": "integer",
+          "active_leases": "integer", 
+          "static_registrations": "integer",
+          "rogue_ports_detected": "integer",
+          "std_tests_performed": "integer",
+          "uptime_since": "ISO 8601 timestamp",
+          "last_pimp_checkup": "ISO 8601 timestamp"
         }
       }
     },
 
     "protocol_schema": {
+      "description": "PortHub Protocol (PHP) packet definition for daemon communication",
       "porthub_protocol_packet": {
         "version": {
           "type": "string",
           "description": "Protocol version",
-          "example": "1.0.0"
+          "example": "1.0.0",
+          "required": true
         },
         "command": {
           "type": "string",
           "enum": ["DISCOVER", "REQUEST", "RENEW", "RELEASE", "REGISTER", "REJECT"],
-          "description": "Protocol command"
+          "description": "Protocol command",
+          "required": true
         },
         "clientId": {
           "type": "string",
           "description": "App/workspace ID",
-          "example": "tilt-api-dev"
+          "example": "tilt-api-dev",
+          "required": true
         },
         "requestedPort": {
           "type": "integer",
           "minimum": 1024,
           "maximum": 65535,
-          "description": "Optional; for static requests"
+          "description": "Optional; for static requests",
+          "required": false
         },
         "ttl": {
           "type": "integer",
           "description": "Lease time in seconds",
-          "default": 3600
+          "default": 3600,
+          "required": false
         },
         "metadata": {
           "type": "object",
@@ -79,156 +102,350 @@
             "name": {"type": "string"},
             "description": {"type": "string"},
             "tags": {"type": "array", "items": {"type": "string"}},
-            "project": {"type": "string"}
-          }
+            "project": {"type": "string"},
+            "category": {"type": "string", "enum": ["nubiles", "milfs", "gmilfs", "tramp_stamps", "bind_stormers", "fluffers"]}
+          },
+          "required": false
         }
       }
     },
 
     "configuration_schema": {
-      "porthub_config": {
-        "daemon": {
-          "port": {
-            "type": "integer",
-            "default": 7777,
-            "description": "Port Pimp daemon port"
-          },
-          "log_level": {
-            "type": "string",
-            "enum": ["debug", "info", "warn", "error"],
-            "default": "info"
-          },
-          "scan_interval": {
-            "type": "integer",
-            "default": 30,
-            "description": "Port scanning interval in seconds"
+      "description": "Complete configuration hierarchy and schema definitions",
+      "priority_order": [
+        "CLI arguments (highest)",
+        "Environment variables (PORTHUB_*)",
+        "Local config (./porthub.json)",
+        "User config (~/.porthub/config.json)",
+        "Global config (/etc/porthub/config.json)",
+        "Built-in defaults (lowest)"
+      ],
+      
+      "user_config_schema": {
+        "version": "1.0.0",
+        "pimp_setup": {
+          "completed": {"type": "boolean", "default": false},
+          "setup_date": {"type": "string", "format": "ISO 8601"},
+          "wizard_version": {"type": "string"},
+          "user_preferences": {
+            "snarky_level": {"type": "string", "enum": ["mild", "medium", "maximum"], "default": "maximum"},
+            "notification_style": {"type": "string", "enum": ["quiet", "normal", "aggressive"], "default": "aggressive"},
+            "color_scheme": {"type": "string", "enum": ["classic_pimp", "dark_mode", "retro_neon"], "default": "classic_pimp"}
           }
         },
         
-        "port_ranges": {
-          "dynamic_pool": {
-            "start": {"type": "integer", "default": 8000},
-            "end": {"type": "integer", "default": 9999}
-          },
-          "reserved_ranges": {
-            "type": "array",
-            "items": {
-              "start": {"type": "integer"},
-              "end": {"type": "integer"},
-              "description": {"type": "string"}
-            }
-          }
+        "daemon": {
+          "port": {"type": "integer", "default": 7777, "description": "Port Pimp daemon port"},
+          "auto_start": {"type": "boolean", "default": true},
+          "log_level": {"type": "string", "enum": ["debug", "info", "warn", "error", "snarky"], "default": "snarky"},
+          "pid_file": {"type": "string", "default": "~/.porthub/porthubd.pid"},
+          "scan_interval": {"type": "integer", "default": 30, "description": "Port scanning interval in seconds"}
+        },
+        
+        "port_management": {
+          "dynamic_range": {"type": "array", "items": {"type": "integer"}, "default": [8000, 8999]},
+          "excluded_ports": {"type": "array", "items": {"type": "integer"}, "default": [22, 80, 443, 7777]},
+          "default_lease_ttl": {"type": "integer", "default": 3600},
+          "heartbeat_interval": {"type": "integer", "default": 30},
+          "grace_period": {"type": "integer", "default": 300}
         },
         
         "gang_bang_mode": {
-          "threshold": {
-            "type": "integer",
-            "default": 10,
-            "description": "Number of ports to trigger GANG BANG mode"
-          },
-          "behavior": {
-            "type": "string",
-            "enum": ["alert", "throttle", "block"],
-            "default": "alert"
-          }
+          "threshold": {"type": "integer", "default": 10, "description": "Ports to trigger GANG BANG mode"},
+          "behavior": {"type": "string", "enum": ["alert", "throttle", "block"], "default": "alert"},
+          "acronym": "Globally Allocated Network Groups: Binding All Network Gateways"
         },
 
         "std_testing": {
+          "auto_test_new_ports": {"type": "boolean", "default": true},
           "mandatory": {"type": "boolean", "default": true},
+          "scan_interval": {"type": "integer", "default": 300},
+          "deep_scan_enabled": {"type": "boolean", "default": true},
+          "risk_threshold": {"type": "number", "default": 7.0},
           "retention_days": {"type": "integer", "default": 30},
           "test_types": {
             "type": "array",
             "items": {"type": "string"},
             "default": ["connectivity", "security", "performance", "compatibility"]
           }
+        },
+        
+        "notifications": {
+          "desktop_alerts": {"type": "boolean", "default": true},
+          "sound_effects": {"type": "boolean", "default": true},
+          "email_alerts": {"type": "boolean", "default": false},
+          "webhook_url": {"type": "string", "default": null},
+          "alert_levels": {
+            "port_conflict": {"type": "string", "default": "high"},
+            "lease_expiry": {"type": "string", "default": "medium"},
+            "rogue_detection": {"type": "string", "default": "high"},
+            "std_test_failure": {"type": "string", "default": "critical"}
+          }
+        },
+        
+        "ui_preferences": {
+          "cli_colors": {"type": "boolean", "default": true},
+          "emoji_enabled": {"type": "boolean", "default": true},
+          "table_format": {"type": "string", "enum": ["simple", "fancy", "minimal"], "default": "fancy"},
+          "progress_bars": {"type": "boolean", "default": true},
+          "pimp_ascii_art": {"type": "boolean", "default": true}
         }
       }
     },
 
     "device_classifications": {
+      "description": "Adult video library naming system for port classifications",
       "categories": {
-        "PortStars": {
-          "criteria": "Properly registered services",
+        "nubiles": {
+          "description": "New ports registered < 1 week",
+          "criteria": "age < 604800 seconds",
+          "icon": "🆕",
+          "priority": "high_attention",
+          "privileges": ["beginner_guidance", "extra_monitoring"]
+        },
+        "milfs": {
+          "description": "Ports in system > 6 months",
+          "criteria": "age > 15552000 seconds",
+          "icon": "💎", 
+          "priority": "stable_veteran",
           "privileges": ["priority_allocation", "extended_leases", "premium_support"]
         },
-        "PortHogs": {
-          "criteria": "Services using 10+ ports",
+        "gmilfs": {
+          "description": "Legacy services (Java RMI, etc)",
+          "criteria": "age > 31104000 seconds OR legacy_tech_detected",
+          "icon": "👵",
+          "priority": "respect_elder",
+          "privileges": ["reserved_ports", "compatibility_mode", "special_handling"]
+        },
+        "tramp_stamps": {
+          "description": "Ports that appear/disappear, unclaimed",
+          "criteria": "intermittent_behavior",
+          "icon": "💫",
+          "priority": "needs_discipline",
+          "restrictions": ["shorter_leases", "mandatory_registration"]
+        },
+        "bind_stormers": {
+          "description": "Services that cycle ports or multi-bind",
+          "criteria": "port_count > 5 OR frequent_rebinding",
+          "icon": "🌪️",
+          "priority": "high_maintenance",
           "restrictions": ["rate_limiting", "resource_monitoring", "mandatory_registration"]
         },
-        "DHCP_devices": {
+        "fluffers": {
+          "description": "Helper daemons doing pre-checks",
+          "criteria": "support_service_detected",
+          "icon": "🛠️",
+          "priority": "essential_support",
+          "privileges": ["system_access", "priority_startup", "background_operations"]
+        },
+        "port_hogs": {
+          "description": "Services using 10+ ports",
+          "criteria": "port_count >= 10",
+          "icon": "🐷",
+          "priority": "resource_management",
+          "restrictions": ["gang_bang_mode_trigger", "resource_limits", "mandatory_justification"]
+        },
+        "dhcp_devices": {
           "full_name": "Devices Hooking & Connecting Promiscuously",
-          "criteria": "Frequent port changes, multiple simultaneous connections",
+          "description": "Frequent port changes, multiple connections",
+          "criteria": "connection_pattern_analysis",
+          "icon": "🔄",
           "monitoring": ["connection_patterns", "resource_usage", "stability_metrics"]
         },
-        "Butterflies": {
-          "criteria": "Intermittent services, short-lived connections",
+        "butterflies": {
+          "description": "Intermittent services, short-lived connections",
+          "criteria": "connection_duration < 300 seconds",
+          "icon": "🦋",
           "handling": ["lightweight_tracking", "minimal_overhead", "fast_cleanup"]
         },
-        "Cremated": {
-          "criteria": "Deallocated or terminated services",
+        "cremated": {
+          "description": "Deallocated or terminated services",
+          "criteria": "service_terminated",
+          "icon": "⚱️",
           "retention": "30 days for forensics"
         },
-        "Ghost_Loads": {
-          "criteria": "Unresponsive services still holding ports",
+        "ghost_loads": {
+          "description": "Unresponsive services still holding ports",
+          "criteria": "missed_heartbeats > threshold",
+          "icon": "👻",
           "actions": ["health_checks", "automatic_cleanup", "owner_notification"]
         }
       }
     },
 
+    "std_testing_schema": {
+      "description": "Service & Transmission Diagnostics - comprehensive port analysis",
+      "test_result_structure": {
+        "port": "integer",
+        "std_test_results": {
+          "owner_pid": "integer",
+          "user": "string",
+          "application": "string",
+          "protocol": "TCP|UDP|SCTP",
+          "service_name_guess": "string with personality",
+          "uptime_since": "ISO 8601 timestamp",
+          "performance_rate": "string with metrics",
+          "recent_clients": ["array of IP addresses"],
+          "leak_risk_score": "number 0-10",
+          "additional_attributes": {
+            "bind_promiscuity": "exclusive|shared|promiscuous",
+            "connection_appetite": "light|moderate|heavy|insatiable",
+            "response_time": "quick_finisher|steady_performer|marathon_runner",
+            "data_protection": "wrapped_secure|basic_protection|raw_no_wrapper",
+            "exposure_level": "discrete_local_only|known_partners|publicly_available|wide_open",
+            "port_behavior": "well_trained|needs_discipline|rogue_butterfly"
+          }
+        },
+        "std_status": "clean|needs_testing|risky|quarantined",
+        "last_tested": "ISO 8601 timestamp",
+        "next_checkup": "ISO 8601 timestamp"
+      }
+    },
+
     "api_endpoints": {
+      "description": "Complete REST and WebSocket API definitions",
       "rest_api": {
         "base_url": "http://localhost:7777/api/v1",
+        "authentication": "OS-level user validation",
         "endpoints": {
           "/ports": {
-            "GET": "List all registered ports",
-            "POST": "Register new port"
+            "GET": {
+              "description": "List all registered ports",
+              "response": "Array of port objects with full metadata"
+            },
+            "POST": {
+              "description": "Register new static port",
+              "body": "Port registration object with metadata"
+            }
           },
-          "/ports/{id}": {
-            "GET": "Get specific port details",
-            "PUT": "Update port registration",
-            "DELETE": "Release port"
+          "/ports/lease": {
+            "POST": {
+              "description": "Request dynamic port lease",
+              "body": "Lease request with clientId and preferences"
+            }
+          },
+          "/ports/{port}": {
+            "GET": {
+              "description": "Get specific port details",
+              "response": "Complete port object with STD results"
+            },
+            "PUT": {
+              "description": "Update port registration",
+              "body": "Updated port metadata"
+            },
+            "DELETE": {
+              "description": "Release port registration",
+              "response": "Release confirmation"
+            }
+          },
+          "/ports/{port}/renew": {
+            "PUT": {
+              "description": "Renew dynamic port lease",
+              "body": "Renewal request with TTL preferences"
+            }
           },
           "/services": {
-            "GET": "List all services"
+            "GET": {
+              "description": "List all services grouped by category",
+              "response": "Services organized by port categories"
+            }
+          },
+          "/scan": {
+            "GET": {
+              "description": "Get port scan results",
+              "response": "Current system port usage vs registry"
+            },
+            "POST": {
+              "description": "Trigger immediate port scan",
+              "response": "Scan initiation confirmation"
+            }
           },
           "/dashboard": {
-            "GET": "Port Exploder dashboard data"
+            "GET": {
+              "description": "Port Exploder dashboard data",
+              "response": "Complete dashboard state with statistics"
+            }
           },
           "/std-testing": {
-            "POST": "Initiate STD testing",
-            "GET": "Get testing results"
+            "POST": {
+              "description": "Initiate STD testing on specific port",
+              "body": "Port number and test preferences"
+            },
+            "GET": {
+              "description": "Get STD testing results",
+              "response": "Complete testing history and current status"
+            }
+          },
+          "/status": {
+            "GET": {
+              "description": "Daemon health and system status",
+              "response": "Daemon uptime, memory usage, performance metrics"
+            }
           }
         }
       },
-      
+
       "websocket_api": {
         "endpoint": "ws://localhost:7777/ws",
+        "authentication": "OS-level user validation",
         "events": {
-          "port_conflict": "Real-time conflict notifications",
+          "port_leased": "Dynamic port lease granted",
+          "port_released": "Port released by service",
+          "port_expired": "Dynamic lease expired",
+          "port_conflict": "Unregistered service detected on port",
+          "port_registered": "New static port registration",
+          "scan_complete": "Port scan finished",
+          "heartbeat_missed": "Service failed to heartbeat",
           "service_status": "Service state changes",
-          "gang_bang_alert": "High port usage alerts",
-          "std_results": "Testing completion notifications"
+          "gang_bang_alert": "High port usage threshold reached",
+          "std_results": "STD testing completion notifications",
+          "rogue_detected": "Unregistered port activity detected"
+        }
+      }
+    },
+
+    "cross_platform_tools": {
+      "description": "Native port scanning tools per operating system",
+      "platforms": {
+        "darwin": {
+          "primary_tool": "lsof -i",
+          "fallback": "netstat -an",
+          "process_info": "built_in",
+          "privilege_ports": "sudo required for ports < 1024"
+        },
+        "linux": {
+          "primary_tool": "lsof -i",
+          "fallback": "ss -tulpn",
+          "process_info": "built_in",
+          "privilege_ports": "sudo required for ports < 1024"
+        },
+        "win32": {
+          "primary_tool": "netstat -ano",
+          "fallback": "PowerShell Get-NetTCPConnection",
+          "process_info": "requires_pid_lookup",
+          "privilege_ports": "Administrator required for ports < 1024"
         }
       }
     },
 
     "security_model": {
+      "description": "OS-level authentication and user isolation",
       "authentication": {
         "method": "OS-level user validation",
-        "implementation": "whoami command validation"
+        "implementation": "whoami command validation + process ownership"
       },
       
       "authorization": {
         "privileged_ports": {
           "range": "0-1023",
-          "requirement": "sudo access",
-          "validation": "OS privilege check"
+          "requirement": "sudo/Administrator access",
+          "validation": "OS privilege check before binding"
         },
         
         "user_isolation": {
           "per_user_daemon": true,
           "cross_user_access": false,
-          "shared_system_ports": "read-only"
+          "shared_system_ports": "read-only visibility"
         }
       },
       
@@ -236,16 +453,59 @@
         "directories": "700 (user only)",
         "config_files": "600 (user read/write only)",
         "log_files": "600 (user read/write only)",
-        "registry_data": "600 (user read/write only)"
+        "registry_data": "600 (user read/write only)",
+        "daemon_socket": "600 (user only)"
       }
     },
 
     "performance_targets": {
-      "cli_response_time": "< 100ms for simple commands",
-      "daemon_memory_usage": "< 50MB RAM baseline",
-      "system_scan_performance": "< 5 seconds full scan",
-      "dashboard_load_time": "< 2 seconds to full functionality",
-      "port_detection_latency": "< 1 second real-time detection"
+      "description": "Performance benchmarks and optimization targets",
+      "targets": {
+        "cli_response_time": "< 100ms for simple commands",
+        "daemon_memory_usage": "< 50MB RAM baseline",
+        "system_scan_performance": "< 5 seconds full port scan",
+        "dashboard_load_time": "< 2 seconds to full functionality",
+        "port_detection_latency": "< 1 second real-time detection",
+        "websocket_latency": "< 50ms event propagation",
+        "database_operations": "< 10ms registry read/write"
+      }
+    },
+
+    "workflow_definitions": {
+      "description": "Core workflow and process definitions",
+      "dynamic_lease_workflow": [
+        "Client sends REQUEST with clientId and preferences",
+        "Daemon checks availability in dynamic pool range",
+        "Available port assigned with TTL",
+        "Lease confirmation returned to client",
+        "Client must heartbeat to maintain lease",
+        "Expired leases return to available pool"
+      ],
+      
+      "static_registration_workflow": [
+        "Client sends REGISTER with port and metadata",
+        "Daemon validates port availability and ownership",
+        "Conflict check against existing registrations",
+        "Registration persisted to registry",
+        "Confirmation returned to client"
+      ],
+      
+      "conflict_detection_workflow": [
+        "Periodic system port scan",
+        "Compare system ports vs registry data",
+        "Flag unregistered port bindings as rogue",
+        "STD testing initiated on rogue ports",
+        "Alert user with resolution options (claim/ignore/block)"
+      ],
+      
+      "std_testing_workflow": [
+        "Port detected (registered or rogue)",
+        "Gather process information (PID, user, application)",
+        "Analyze connection patterns and behavior",
+        "Generate risk assessment and personality profile",
+        "Store results with timestamp",
+        "Schedule next checkup based on risk level"
+      ]
     }
   }
 } 
