@@ -1,0 +1,251 @@
+{
+  "porthub_technical_specifications": {
+    "version": "1.0.0",
+    "last_updated": "2025-06-29",
+    
+    "prevention_strategies": {
+      "proactive_monitoring": {
+        "predictive_analysis": {
+          "port_usage_trends": "Track patterns to predict conflicts",
+          "resource_usage_projection": "Predict when system limits will be hit", 
+          "service_behavior_learning": "Learn normal vs abnormal service patterns",
+          "failure_prediction": "Identify conditions that lead to crashes"
+        },
+        
+        "automated_maintenance": {
+          "log_rotation": "daily",
+          "backup_cleanup": "weekly", 
+          "registry_optimization": "weekly",
+          "performance_tuning": "monthly",
+          "security_updates": "automatic"
+        },
+        
+        "early_warning_system": {
+          "approaching_gang_bang_mode": "Alert at 80% of threshold",
+          "resource_exhaustion_warning": "Alert at 75% of limits",
+          "service_instability": "Alert on repeated crashes",
+          "configuration_drift": "Alert on unauthorized changes"
+        }
+      },
+      
+      "user_education_automation": {
+        "contextual_tips": [
+          "💡 Tip: Register this service for better management",
+          "🎯 Pro tip: Use 'porthub scan' to find rogue ports",
+          "🔧 Maintenance tip: Your logs are getting large",
+          "⚡ Performance tip: Consider increasing scan interval"
+        ],
+        
+        "guided_troubleshooting": {
+          "problem_detection": "automatic",
+          "solution_suggestion": "contextual",
+          "step_by_step_guidance": "interactive",
+          "success_validation": "automatic"
+        }
+      }
+    },
+
+    "protocol_schema": {
+      "porthub_protocol_packet": {
+        "version": {
+          "type": "string",
+          "description": "Protocol version",
+          "example": "1.0.0"
+        },
+        "command": {
+          "type": "string",
+          "enum": ["DISCOVER", "REQUEST", "RENEW", "RELEASE", "REGISTER", "REJECT"],
+          "description": "Protocol command"
+        },
+        "clientId": {
+          "type": "string",
+          "description": "App/workspace ID",
+          "example": "tilt-api-dev"
+        },
+        "requestedPort": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 65535,
+          "description": "Optional; for static requests"
+        },
+        "ttl": {
+          "type": "integer",
+          "description": "Lease time in seconds",
+          "default": 3600
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "name": {"type": "string"},
+            "description": {"type": "string"},
+            "tags": {"type": "array", "items": {"type": "string"}},
+            "project": {"type": "string"}
+          }
+        }
+      }
+    },
+
+    "configuration_schema": {
+      "porthub_config": {
+        "daemon": {
+          "port": {
+            "type": "integer",
+            "default": 7777,
+            "description": "Port Pimp daemon port"
+          },
+          "log_level": {
+            "type": "string",
+            "enum": ["debug", "info", "warn", "error"],
+            "default": "info"
+          },
+          "scan_interval": {
+            "type": "integer",
+            "default": 30,
+            "description": "Port scanning interval in seconds"
+          }
+        },
+        
+        "port_ranges": {
+          "dynamic_pool": {
+            "start": {"type": "integer", "default": 8000},
+            "end": {"type": "integer", "default": 9999}
+          },
+          "reserved_ranges": {
+            "type": "array",
+            "items": {
+              "start": {"type": "integer"},
+              "end": {"type": "integer"},
+              "description": {"type": "string"}
+            }
+          }
+        },
+        
+        "gang_bang_mode": {
+          "threshold": {
+            "type": "integer",
+            "default": 10,
+            "description": "Number of ports to trigger GANG BANG mode"
+          },
+          "behavior": {
+            "type": "string",
+            "enum": ["alert", "throttle", "block"],
+            "default": "alert"
+          }
+        },
+
+        "std_testing": {
+          "mandatory": {"type": "boolean", "default": true},
+          "retention_days": {"type": "integer", "default": 30},
+          "test_types": {
+            "type": "array",
+            "items": {"type": "string"},
+            "default": ["connectivity", "security", "performance", "compatibility"]
+          }
+        }
+      }
+    },
+
+    "device_classifications": {
+      "categories": {
+        "PortStars": {
+          "criteria": "Properly registered services",
+          "privileges": ["priority_allocation", "extended_leases", "premium_support"]
+        },
+        "PortHogs": {
+          "criteria": "Services using 10+ ports",
+          "restrictions": ["rate_limiting", "resource_monitoring", "mandatory_registration"]
+        },
+        "DHCP_devices": {
+          "full_name": "Devices Hooking & Connecting Promiscuously",
+          "criteria": "Frequent port changes, multiple simultaneous connections",
+          "monitoring": ["connection_patterns", "resource_usage", "stability_metrics"]
+        },
+        "Butterflies": {
+          "criteria": "Intermittent services, short-lived connections",
+          "handling": ["lightweight_tracking", "minimal_overhead", "fast_cleanup"]
+        },
+        "Cremated": {
+          "criteria": "Deallocated or terminated services",
+          "retention": "30 days for forensics"
+        },
+        "Ghost_Loads": {
+          "criteria": "Unresponsive services still holding ports",
+          "actions": ["health_checks", "automatic_cleanup", "owner_notification"]
+        }
+      }
+    },
+
+    "api_endpoints": {
+      "rest_api": {
+        "base_url": "http://localhost:7777/api/v1",
+        "endpoints": {
+          "/ports": {
+            "GET": "List all registered ports",
+            "POST": "Register new port"
+          },
+          "/ports/{id}": {
+            "GET": "Get specific port details",
+            "PUT": "Update port registration",
+            "DELETE": "Release port"
+          },
+          "/services": {
+            "GET": "List all services"
+          },
+          "/dashboard": {
+            "GET": "Port Exploder dashboard data"
+          },
+          "/std-testing": {
+            "POST": "Initiate STD testing",
+            "GET": "Get testing results"
+          }
+        }
+      },
+      
+      "websocket_api": {
+        "endpoint": "ws://localhost:7777/ws",
+        "events": {
+          "port_conflict": "Real-time conflict notifications",
+          "service_status": "Service state changes",
+          "gang_bang_alert": "High port usage alerts",
+          "std_results": "Testing completion notifications"
+        }
+      }
+    },
+
+    "security_model": {
+      "authentication": {
+        "method": "OS-level user validation",
+        "implementation": "whoami command validation"
+      },
+      
+      "authorization": {
+        "privileged_ports": {
+          "range": "0-1023",
+          "requirement": "sudo access",
+          "validation": "OS privilege check"
+        },
+        
+        "user_isolation": {
+          "per_user_daemon": true,
+          "cross_user_access": false,
+          "shared_system_ports": "read-only"
+        }
+      },
+      
+      "file_permissions": {
+        "directories": "700 (user only)",
+        "config_files": "600 (user read/write only)",
+        "log_files": "600 (user read/write only)",
+        "registry_data": "600 (user read/write only)"
+      }
+    },
+
+    "performance_targets": {
+      "cli_response_time": "< 100ms for simple commands",
+      "daemon_memory_usage": "< 50MB RAM baseline",
+      "system_scan_performance": "< 5 seconds full scan",
+      "dashboard_load_time": "< 2 seconds to full functionality",
+      "port_detection_latency": "< 1 second real-time detection"
+    }
+  }
+} 
