@@ -6,6 +6,12 @@ alwaysApply: true
 # PortHub Cursor Rules
 # "No Bloat. No Debt. No Bullshit."
 
+<!-- cSpell:words Hublet Fluffer cursorrules porthub PortHub roadmaps taglines -->
+<!-- cSpell:words peepshow backstory backdoor fluffers hublets milfs gmilfs -->
+<!-- cSpell:words nubiles trampstamps bindstormers nucleargasm sneakysniffer -->
+<!-- cSpell:words portfluffer portvision portexploder dhcp mdns zeroconf -->
+<!-- cSpell:words fing nmap triggerable hubba snarkiness cucks diponly cuck -->
+
 ## 🎯 Core Philosophy
 - **MINIMUM BLOAT**: Every line of code must justify its existence
 - **IMMEDIATE TECH DEBT**: Address technical debt the moment it's identified
@@ -58,12 +64,20 @@ When user says "session wrap" or "let's wrap", execute this comprehensive 8-step
 - **Cross-reference validation**: Check internal links and file references
 
 ### 4. Technical Debt Cleanup 🧹
-- **Scan for deletion candidates**: Temp files, backups, obsolete code, debug outputs
-- **Unused dependencies audit**: Remove packages not actively used
-- **Dead code detection**: Functions, variables, imports no longer referenced
-- **Configuration consistency**: Validate all config files align
-- **Broken reference cleanup**: Fix invalid file paths, missing dependencies
+- **AUTOMATED DEBT SCANNING**: Run comprehensive tech debt detection
+- **Update TECHDEBT.md**: Log new issues found, mark resolved items complete
+- **Cursor Error Analysis**: Count and categorize all IDE warning indicators
+- **Linting Issues**: `npx markdownlint-cli *.md` and other linters
+- **Spell Check Issues**: `npx cspell "**/*"` across all relevant files  
+- **Unused Dependencies**: Analyze package.json vs actual imports
+- **Dead Code Detection**: Functions, variables, imports no longer referenced
+- **TODO Comment Audit**: Find orphaned TODOs without corresponding issues
+- **Security Vulnerabilities**: `npm audit` and dependency analysis
+- **Performance Bottlenecks**: Bundle size, load time, memory usage analysis
+- **Configuration Drift**: Validate all config files align with project standards
+- **Broken Reference Cleanup**: Fix invalid file paths, missing dependencies
 - **Recommend specific files for removal** with justification
+- **DEBT ACCOUNTABILITY**: Every new debt item gets session timestamp and priority
 
 ### 5. Configuration Validation ⚙️
 - **Verify .gitignore**: Add new patterns for build artifacts, temp files
