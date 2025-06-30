@@ -48,4 +48,24 @@ Thumbs.db
 
 # Keep spell check configuration
 !cspell.json
-!.cspell.json 
+!.cspell.json
+
+# PortHub Internal Development Files (Local Only)
+ROADMAP.md
+cursorrulesclone.txt
+TECHDEBT.md
+PROJECT_FILE_REFERENCE.md
+*session-wrap*
+*-notes.md
+ascii-banner.txt
+colored-porthub-logo.txt
+porthub-banner.txt
+port_hub_logo*.png
+show-logo.sh
+PortHubBadge.jsx
+OLD\ and\ able\ to\ delete/
+
+# Cursor IDE files and duplicates
+.cursor/
+porthubrules
+*.mdc 
