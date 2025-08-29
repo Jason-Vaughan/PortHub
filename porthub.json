@@ -1,0 +1,17 @@
+{
+  "name": "default-workspace",
+  "description": "Default PortHub workspace configuration",
+  "portRanges": {
+    "static": [
+      1024,
+      65535
+    ],
+    "dynamic": [
+      3000,
+      3999
+    ]
+  },
+  "autoScan": true,
+  "notifications": true,
+  "theme": "casting-consultant"
+}
