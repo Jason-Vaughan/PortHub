@@ -1,6 +1,6 @@
 {
   "name": "@porthub/porthub",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "DHCP for Developers - Professional port registry prevents 'address already in use' errors with automatic lease management, AI assistant integration, and real-time dashboard",
   "main": "dist/index.js",
   "bin": {
@@ -19,7 +19,7 @@
   },
   "keywords": [
     "port",
-    "port-management", 
+    "port-management",
     "port-registry",
     "port-conflict",
     "address-already-in-use",
