@@ -298,9 +298,10 @@ export async function registerPortHubPorts(): Promise<void> {
   }
   
   const infrastructurePorts = [
-    { port: 8080, service: 'porthub-daemon', description: 'PortHub WebSocket & API server' },
-    { port: 8081, service: 'porthub-dashboard', description: 'PortHub web dashboard (future)' },
-    { port: 8082, service: 'porthub-metrics', description: 'PortHub metrics & monitoring (future)' }
+    { port: 8080, service: 'websocket-server', description: 'PortHub WebSocket & API server' },
+    { port: 8081, service: 'dashboard-server', description: 'PortHub web dashboard static files' },
+    { port: 8082, service: 'metrics-server', description: 'PortHub metrics & monitoring (future)' },
+    { port: 8888, service: 'admin-api', description: 'PortHub admin API (future)' }
   ];
   
   for (const { port, service, description } of infrastructurePorts) {
@@ -308,7 +309,7 @@ export async function registerPortHubPorts(): Promise<void> {
       const result = await sendToMaemon('LEASE', {
         port,
         metadata: {
-          project: 'porthub',
+          project: 'porthub-system',
           service,
           description,
           permanent: true,

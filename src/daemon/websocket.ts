@@ -40,6 +40,23 @@ export async function startWebSocketServer(port: number, registry: PortRegistry)
           registryVersion: registry.version
         }));
         
+        // Immediately send current registry state to new client
+        setTimeout(() => {
+          const registryData = {
+            version: registry.version,
+            assignments: Object.fromEntries(registry.ports),
+            lastUpdated: registry.lastUpdated
+          };
+          
+          ws.send(JSON.stringify({
+            type: 'registry_update',
+            data: registryData,
+            timestamp: new Date().toISOString()
+          }));
+          
+          console.log(chalk.gray('📊 Sent initial registry state to new client'));
+        }, 100); // Small delay to ensure welcome message is processed first
+        
         // Handle client messages
         ws.on('message', async (data) => {
           try {
@@ -127,7 +144,7 @@ async function handleWebSocketMessage(ws: any, message: any, registry: PortRegis
           type: 'registry_update',
           data: {
             version: registry.version,
-            ports: Array.from(registry.ports.values()),
+            assignments: Object.fromEntries(registry.ports),
             lastUpdated: registry.lastUpdated
           }
         }));
@@ -164,7 +181,7 @@ export function broadcastRegistryUpdate(wsServer: any, registry: PortRegistry): 
     type: 'registry_update',
     data: {
       version: registry.version,
-      ports: Array.from(registry.ports.values()),
+      assignments: Object.fromEntries(registry.ports),
       lastUpdated: registry.lastUpdated
     },
     timestamp: new Date().toISOString()

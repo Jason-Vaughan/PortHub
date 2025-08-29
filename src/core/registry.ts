@@ -56,8 +56,13 @@ export async function registerPort(
     metadata: {}
   };
   
-  // Set expiration for dynamic ports
-  if (options.ttl && assignment.type === 'dynamic') {
+  // Handle TTL and permanent status
+  if (options.ttl === -1) {
+    // Permanent lease
+    assignment.status = 'permanent';
+    assignment.metadata = { permanent: true };
+  } else if (options.ttl && assignment.type === 'dynamic') {
+    // Temporary lease with expiration
     assignment.expiresAt = new Date(now.getTime() + options.ttl * 1000);
   }
   
@@ -147,6 +152,44 @@ export async function updateHeartbeat(
   
   assignment.lastHeartbeat = new Date();
   registry.lastUpdated = new Date();
+  
+  return true;
+}
+
+export async function heartbeatPort(
+  registry: PortRegistry,
+  port: number,
+  clientId: string
+): Promise<boolean> {
+  const assignment = registry.ports.get(port);
+  
+  if (!assignment) {
+    return false;
+  }
+  
+  if (assignment.clientId !== clientId) {
+    return false;
+  }
+  
+  // For permanent leases, just update heartbeat
+  if (assignment.status === 'permanent') {
+    assignment.lastHeartbeat = new Date();
+    registry.lastUpdated = new Date();
+    console.log(chalk.blue(`💓 Heartbeat updated for permanent port ${port}`));
+    return true;
+  }
+  
+  // For dynamic leases, extend the lease
+  const now = new Date();
+  const originalTTL = assignment.metadata?.ttl || (2 * 60 * 60 * 1000); // Default 2 hours in ms
+  const newExpiry = new Date(now.getTime() + originalTTL);
+  
+  assignment.expiresAt = newExpiry;
+  assignment.lastHeartbeat = now;
+  registry.lastUpdated = now;
+  
+  console.log(chalk.green(`💓 Lease extended for port ${port} until ${newExpiry.toLocaleString()}`));
+  console.log(chalk.gray('"Another round on the house"'));
   
   return true;
 }

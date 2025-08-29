@@ -1,14 +1,75 @@
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Jason-Vaughan/puberty-labs-assets/refs/heads/main/porthub-logo.png" alt="PortHub Logo" width="300">
+</div>
+
 # PortHub - DHCP for Developers
 
 **"No Conflicts. Just Connections."** 🎭
 
-PortHub provides DHCP-style port management for local development environments. Say goodbye to "port already in use" errors and hello to professional multi-project development workflows.
+## 🎯 What is PortHub?
+
+PortHub is a **professional port registry** that manages development ports like a DHCP server. It prevents "port already in use" errors by intelligently tracking, leasing, and managing ports across all your development projects.
+
+### 🚨 Problem It Solves
+- **Port Conflicts**: No more "EADDRINUSE" or "address already in use" errors when starting multiple projects
+- **React/Next.js Development**: Seamlessly run multiple React, Next.js, and Node.js projects simultaneously 
+- **Database Management**: Permanent port leases for PostgreSQL, MySQL, MongoDB, Redis
+- **AI Assistant Integration**: Designed for Cursor, VS Code, and other AI-powered development tools
+- **Project Chaos**: Know which project owns which ports across your entire development environment
+- **Manual Tracking**: Stop manually remembering which ports are free
+- **Abandoned Ports**: Automatic cleanup of forgotten development servers with TTL expiration
+
+### ✨ How It Works
+1. **Request a Port**: PortHub assigns and tracks it with a lease (like DHCP)
+2. **Time-to-Live (TTL)**: Ports automatically expire and get freed
+3. **Real-Time Dashboard**: Monitor all active leases via web interface
+4. **Smart Conflicts**: Get suggested alternatives when ports are busy
+5. **Permanent Infrastructure**: Databases and core services stay registered
+
+### 🎭 Web Dashboard
+PortHub includes a real-time web dashboard for visual port management:
+
+![PortHub Dashboard](screenshots/dashboard-overview.png)
+*Real-time port lease monitoring with WebSocket updates*
+
+![Create New Lease](screenshots/create-lease.png)
+*Easy lease creation with project and service autocomplete*
+
+![Edit Lease Settings](screenshots/edit-lease.png)
+*Manage existing leases with TTL adjustments and Forever easter eggs*
+
+## 🎯 Common Use Cases
+
+### **Frontend Development**
+- **React Development**: `porthub lease 3000 --service "react-dev" --ttl 8h`
+- **Next.js Projects**: Automatic port management for dev server and API routes
+- **Vite Applications**: Conflict-free development with HMR support
+- **Storybook**: Isolated component development without port conflicts
+
+### **Full-Stack Development** 
+- **Node.js APIs**: Express, Fastify, NestJS server management
+- **Database Services**: PostgreSQL (5432), MySQL (3306), MongoDB (27017), Redis (6379)
+- **Microservices**: Run multiple services simultaneously without conflicts
+- **Docker Development**: Container port mapping coordination
+
+### **AI Assistant Workflows**
+- **Cursor Integration**: AI assistants automatically manage ports during development
+- **VS Code Automation**: Programmatic port leasing for development tasks
+- **GitHub Copilot**: Enhanced development workflow with intelligent port management
+- **Automated Testing**: CI/CD pipelines with conflict-free port allocation
+
+### **Team Development**
+- **Multi-Developer**: Prevent port conflicts across team members
+- **Project Switching**: Seamless context switching between different projects
+- **Infrastructure Management**: Shared database and service port coordination
 
 ## 🚀 Quick Start
 
+> **⚠️ Alpha Release:** PortHub is currently in alpha. Core functionality works great, but expect some rough edges. Perfect for early adopters and feedback!
+
 ### 1. Install & Start Daemon
 ```bash
-npm install -g @porthub/porthub
+npm install -g @porthub/porthub@alpha
 porthub start --daemon --port 8080
 ```
 
@@ -292,6 +353,10 @@ PortHub embraces its snarky, sleazy-tech personality while maintaining professio
 
 ### Global Installation
 ```bash
+# Alpha release (current)
+npm install -g @porthub/porthub@alpha
+
+# Stable release (coming soon)
 npm install -g @porthub/porthub
 ```
 
