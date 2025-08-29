@@ -1,6 +1,6 @@
 {
-  "name": "@porthub/porthub",
-  "version": "0.1.0-alpha.2",
+  "name": "@puberty-labs/porthub",
+  "version": "0.1.0-alpha.4",
   "description": "DHCP for Developers - Professional port registry prevents 'address already in use' errors with automatic lease management, AI assistant integration, and real-time dashboard",
   "main": "dist/index.js",
   "bin": {
@@ -47,12 +47,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/porthub/porthub.git"
+    "url": "git+https://github.com/Jason-Vaughan/PortHub.git"
   },
   "bugs": {
-    "url": "https://github.com/porthub/porthub/issues"
+    "url": "https://github.com/Jason-Vaughan/PortHub/issues"
   },
-  "homepage": "https://github.com/porthub/porthub#readme",
+  "homepage": "https://github.com/Jason-Vaughan/PortHub#readme",
   "engines": {
     "node": ">=18.0.0"
   },
