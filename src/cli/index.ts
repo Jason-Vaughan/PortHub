@@ -6,14 +6,27 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
 import { showBanner } from '../utils/banner';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
 const program = new Command();
+
+// Get version from package.json
+const getVersion = (): string => {
+  try {
+    const packageJsonPath = join(__dirname, '../../package.json');
+    const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
+    return packageJson.version;
+  } catch (error) {
+    return '0.1.0-alpha.5'; // Fallback version
+  }
+};
 
 // PortHub CLI Setup with Personality
 program
   .name('porthub')
   .description('The Protocol Registry That Parties Responsibly')
-  .version('0.1.0-alpha.1', '-v, --version', 'Show PortHub version')
+  .version(getVersion(), '-v, --version', 'Show PortHub version')
   .option('-d, --debug', 'Enable debug mode (for when things get dirty)')
   .option('--raw', 'Raw output mode (no fancy formatting)')
   .hook('preAction', (thisCommand) => {
