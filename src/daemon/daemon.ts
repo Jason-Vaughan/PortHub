@@ -49,12 +49,12 @@ export async function startDaemon(options: DaemonOptions): Promise<DaemonInstanc
     // Start IPC server for CLI communication (with WebSocket for broadcasting)
     const ipcServer = await startIPCServer(registry, wsServer);
     
-    // Start REST API server on port + 2 (8080 for WS, 8081 for dashboard, 8082 for API)
-    const apiPort = options.port + 2;
+    // Start REST API server on port 8082 (8080 for WS, 8081 for dashboard, 8082 for API)
+    const apiPort = 8082;
     const apiServer = await startRestAPI(apiPort, registry, wsServer);
     
-    // Start static file server for dashboard on port + 1
-    const dashboardPort = options.port + 1;
+    // Start static file server for dashboard on port 8081
+    const dashboardPort = 8081;
     const dashboardPath = join(__dirname, '../../dashboard-dist');
     let staticServer = null;
     let dashboardUrl = null;

@@ -58,6 +58,7 @@
   },
   "files": [
     "dist/",
+    "dashboard-dist/",
     "README.md",
     "LICENSE",
     "screenshots/"
