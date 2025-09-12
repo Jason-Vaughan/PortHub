@@ -63,17 +63,52 @@ PortHub includes a real-time web dashboard for visual port management:
 - **Project Switching**: Seamless context switching between different projects
 - **Infrastructure Management**: Shared database and service port coordination
 
+## 📦 Installation
+
+### NPM (Recommended)
+```bash
+# Install PortHub globally
+npm install -g @puberty-labs/porthub
+
+# Verify installation
+porthub --version
+```
+
+### Alternative Installation Methods
+```bash
+# Using Yarn
+yarn global add @puberty-labs/porthub
+
+# Using pnpm
+pnpm add -g @puberty-labs/porthub
+
+# Check installation
+which porthub
+```
+
 ## 🚀 Quick Start
 
 > **⚠️ Alpha Release:** PortHub is currently in alpha. Core functionality works great, but expect some rough edges. Perfect for early adopters and feedback!
 
-### 1. Install & Start Daemon
+### 1. Install PortHub
 ```bash
-npm install -g @porthub/porthub@alpha
-porthub start --daemon --port 8080
+# Install globally via NPM
+npm install -g @puberty-labs/porthub
+
+# Verify installation
+porthub --version
 ```
 
-### 2. Lease Ports for Your Projects
+### 2. Start PortHub Daemon
+```bash
+# Start the daemon (WebSocket on 8080, Dashboard on 8081, API on 8082)
+porthub start --daemon --port 8080
+
+# Or start with default port 3000
+porthub start --daemon
+```
+
+### 3. Lease Ports for Your Projects
 ```bash
 # Temporary lease for development
 porthub lease 3000 --project "MyReactApp" --service "dev-server" --ttl 4h
@@ -82,9 +117,14 @@ porthub lease 3000 --project "MyReactApp" --service "dev-server" --ttl 4h
 porthub lease 5432 --service "postgres" --permanent
 ```
 
-### 3. Check Status
+### 4. Check Status & Access Dashboard
 ```bash
+# Check active port leases
 porthub status
+
+# Access the web dashboard
+open http://localhost:8081  # macOS
+# or visit http://localhost:8081 in your browser
 ```
 
 ## 🎯 Core Concepts
