@@ -38,34 +38,41 @@ ehthumbs.db
 Thumbs.db
 
 # IDE files
-.vscode/settings.json
+.vscode/
 .idea/
 *.swp
 *.swo
+.cursor/
+porthubrules
+*.mdc
 
-# Spell check temporary files
+# Spell check
 .cspell/
-
-# Keep spell check configuration
-!cspell.json
-!.cspell.json
+cspell.json
+.cspell.json
 
 # PortHub Internal Development Files (Local Only)
 ROADMAP.md
-cursorrulesclone.txt
 TECHDEBT.md
 PROJECT_FILE_REFERENCE.md
+GLOBAL_CURSOR_RULES.md
+PREVIEW_GUIDE.md
+RELEASE_CHECKLIST.md
+RELEASE_NOTES.md
+RELEASE_STRATEGY.md
+PORT_REGISTRY.md
+cursorrulesclone.txt
 *session-wrap*
 *-notes.md
 ascii-banner.txt
 colored-porthub-logo.txt
 porthub-banner.txt
-port_hub_logo*.png
 show-logo.sh
 PortHubBadge.jsx
-OLD\ and\ able\ to\ delete/
-
-# Cursor IDE files and duplicates
-.cursor/
-porthubrules
-*.mdc 
+PortHub.code-workspace
+com.porthub.daemon.plist
+technical-specifications.json
+test-websocket.js
+porthub.json
+refuctor/
+OLD and able to delete/

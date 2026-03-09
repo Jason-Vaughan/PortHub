@@ -382,42 +382,40 @@ PortHub embraces its snarky, sleazy-tech personality while maintaining professio
 - **Status Updates**: *"Your ports are now under professional management"*
 - **CLI Taglines**: *"The Protocol Registry That Parties Responsibly"*
 
-## 📚 Documentation
+## 🏗️ Development
 
-- **Global Cursor Rules Template**: `src/templates/global-cursor-rules.md`
-- **Project File Reference**: `PROJECT_FILE_REFERENCE.md`
-- **Technical Specifications**: `technical-specifications.json`
-- **Development Roadmap**: `ROADMAP.md` (internal)
+### Prerequisites
+- Node.js >= 18.0.0
+- npm, yarn, or pnpm
 
-## 🚀 Installation & Setup
-
-### Global Installation
+### Building from Source
 ```bash
-# Alpha release (current)
-npm install -g @porthub/porthub@alpha
-
-# Stable release (coming soon)
-npm install -g @porthub/porthub
+git clone https://github.com/Jason-Vaughan/PortHub.git
+cd PortHub
+npm install
+npm run build
 ```
 
-### Verify Installation
-```bash
-porthub --version
-porthub --help
+### Project Structure
+```
+src/
+├── cli/          # CLI commands and interface
+├── core/         # Port registry logic
+├── daemon/       # Background daemon, IPC, WebSocket, REST API
+├── types/        # TypeScript type definitions
+└── utils/        # Utilities (config, port scanner, banner)
+dashboard/        # React web dashboard source
+dashboard-dist/   # Pre-built dashboard assets
+screenshots/      # Dashboard screenshots
 ```
 
-### Start Daemon
-```bash
-porthub start --daemon --port 8080
-```
+## 📄 License
 
-### Test System
-```bash
-porthub start sneakysniffer --dirty
-porthub lease 3000 --service "test" --ttl 5m
-porthub status
-porthub release 3000
-```
+MIT - see [LICENSE](LICENSE) for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
 
 ---
 
