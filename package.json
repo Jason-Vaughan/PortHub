@@ -1,6 +1,6 @@
 {
   "name": "@puberty-labs/porthub",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DHCP for Developers - Professional port registry prevents 'address already in use' errors with automatic lease management, AI assistant integration, and real-time dashboard",
   "main": "dist/index.js",
   "bin": {
@@ -57,11 +57,13 @@
     "node": ">=18.0.0"
   },
   "files": [
-    "dist/",
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
     "dashboard-dist/",
     "README.md",
     "LICENSE",
-    "screenshots/"
+    "screenshots/*.png",
+    "!**/*.map"
   ],
   "dependencies": {
     "commander": "^11.0.0",

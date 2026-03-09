@@ -9,7 +9,8 @@ export default defineConfig({
     host: true
   },
   build: {
-    outDir: 'dist',
-    sourcemap: true
+    outDir: '../dashboard-dist',
+    sourcemap: false,
+    emptyOutDir: true
   }
 })
