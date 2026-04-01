@@ -65,25 +65,14 @@ PortHub includes a real-time web dashboard for visual port management:
 
 ## 📦 Installation
 
-### NPM (Recommended)
+### From Source
 ```bash
-# Install PortHub globally
-npm install -g @puberty-labs/porthub
+# Clone and install globally
+git clone https://github.com/Jason-Vaughan/PortHub.git
+cd PortHub && npm install -g .
 
 # Verify installation
 porthub --version
-```
-
-### Alternative Installation Methods
-```bash
-# Using Yarn
-yarn global add @puberty-labs/porthub
-
-# Using pnpm
-pnpm add -g @puberty-labs/porthub
-
-# Check installation
-which porthub
 ```
 
 ## 🚀 Quick Start
@@ -92,8 +81,9 @@ which porthub
 
 ### 1. Install PortHub
 ```bash
-# Install globally via NPM
-npm install -g @puberty-labs/porthub
+# Clone and install globally
+git clone https://github.com/Jason-Vaughan/PortHub.git
+cd PortHub && npm install -g .
 
 # Verify installation
 porthub --version
