@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Jason-Vaughan/puberty-labs-assets/refs/heads/main/porthub-logo.png" alt="PortHub Logo" width="300">
+  <img src="https://raw.githubusercontent.com/Jason-Vaughan/project-assets/refs/heads/main/porthub-logo.png" alt="PortHub Logo" width="300">
 </div>
 
 # PortHub - DHCP for Developers
